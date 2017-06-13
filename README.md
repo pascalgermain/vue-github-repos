@@ -1,6 +1,6 @@
 # Vue GitHub Repos
 
-> A Vue.js GitHub repos search engine
+> A Vue.js GitHub repos search engine.
 
 > http://pascalgermain.github.io/vue-github-repos/
 
