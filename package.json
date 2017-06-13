@@ -1,12 +1,12 @@
 {
   "name": "vue-github-repos",
   "version": "1.0.0",
-  "description": "A Vue.js GitHub repos search engine",
+  "description": "A Vue.js GitHub repos search engine.",
   "author": "Pascal Germain <pascalgermain@me.com>",
-  "private": true,
+  "homepage": "http://pascalgermain.github.io/vue-github-repos",
   "scripts": {
+    "start": "npm run dev",
     "dev": "node build/dev-server.js",
-    "start": "node build/dev-server.js",
     "build": "node build/build.js",
     "lint": "eslint --ext .js,.vue src"
   },
