@@ -6,13 +6,28 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    repos: []
+    repos: [],
+    loading: false
   },
-  mutations: {},
+  mutations: {
+    setRepos (state, repos) {
+      state.repos = repos
+    },
+    setLoading (state, loading) {
+      state.loading = loading
+    }
+  },
   actions: {
     getRepos ({commit}, {query}) {
       if (query === '') return
-      repos.getRepos(query, response => console.log(response))
+      commit('setLoading', true)
+      repos.getRepos(query, items => {
+        commit('setLoading', false)
+        commit('setRepos', items)
+      }, error => {
+        commit('setLoading', false)
+        console.log('error', error)
+      })
     }
   }
 })

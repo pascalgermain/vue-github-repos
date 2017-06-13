@@ -1,9 +1,15 @@
 <template>
   <div>
-    Repo list
+    {{ status }}
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  computed: {
+    status () {
+      return this.$store.state.loading ? 'Loading' : 'Repo list'
+    }
+  }
+}
 </script>
