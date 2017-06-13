@@ -1,10 +1,21 @@
 <template>
   <div>
-    <input>
-    <input type="button" value="Search">
+    <input v-model="query">
+    <input type="button" value="Search" @click="getRepos">
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  data () {
+    return {
+      query: ''
+    }
+  },
+  methods: {
+    getRepos () {
+      this.$store.dispatch('getRepos', {query: this.query})
+    }
+  }
+}
 </script>
