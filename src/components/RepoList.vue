@@ -4,8 +4,8 @@
     <ul v-else>
       <li v-for="repo in repos">
         <img :src="repo.owner.avatar_url">
-        <a :href="repo.html_url" target="_blank">{{ repo.full_name }}</a>
-        <div>{{ repo.owner.login }}</div>
+        <repo-link :url="repo.html_url" :name="repo.full_name"></repo-link>
+        <input type="button" value="Details" @click="setActiveRepoId(repo.id)">
         <div>{{ repo.description }}</div>
       </li>
     </ul>
@@ -13,14 +13,20 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+import RepoLink from './RepoLink'
+
 export default {
-  computed: {
-    repos () {
-      console.log(this.$store.state.repos)
-      return this.$store.state.repos
-    },
-    loading () {
-      return this.$store.state.loading
+  components: {
+    RepoLink
+  },
+  computed: mapState([
+    'repos',
+    'loading'
+  ]),
+  methods: {
+    setActiveRepoId (repoId) {
+      this.$store.dispatch('setActiveRepoId', repoId)
     }
   }
 }
@@ -42,11 +48,5 @@ img {
   width: 200px;
   height: 200px;
   margin: 0 20px 20px 0;
-}
-
-a {
-  font-weight: bold;
-  color: #2c3e50;
-  text-decoration: none;
 }
 </style>

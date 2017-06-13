@@ -14,7 +14,7 @@ export default {
   },
   methods: {
     getRepos () {
-      this.$store.dispatch('getRepos', {query: this.query})
+      this.$store.dispatch('getRepos', this.query)
     }
   }
 }
